@@ -263,20 +263,27 @@
     }
     .svc-short{margin:0 0 12px; color:var(--muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px; line-height:1.45}
     .svc-price-box{
-      border:1px solid rgba(0,0,0,.12);
+      border:1px solid var(--line);
       border-radius:10px;
       padding:10px 14px;
       margin-bottom:14px;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .svc-price-box--white{
       background:#fff;
+      border-color:rgba(0,0,0,.12);
       color:#1a1a1a;
     }
-    .svc-price .old{display:none}
-    .svc-price .now{font-weight:700; font-size:16px; color:#1a1a1a}
-    .svc-price .now.sale{font-size:18px; color:#1a1a1a}
+    .svc-price-box--white .svc-price .old{display:none}
+    .svc-price-box--white .svc-price .now,
+    .svc-price-box--white .svc-price .now.sale{color:#1a1a1a}
+    .svc-price-box--white .svc-note{color:#5a5a5a}
+    .svc-price .old{opacity:.6; text-decoration:line-through; font-size:12px; margin-bottom:2px}
+    .svc-price .now{font-weight:700; font-size:16px}
+    .svc-price .now.sale{font-size:18px}
     .svc-note{
       margin:6px 0 0;
-      color:#5a5a5a;
+      color:var(--muted);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-size:11px;
     }
@@ -741,7 +748,7 @@
         <article class="svc" id="svc-8">
           <h4 class="svc-title"><span>Полное сопровождение</span></h4>
           <p class="svc-short">Комплексная работа: консультация, гардероб, шоппинг, образы.</p>
-          <div class="svc-price-box">
+          <div class="svc-price-box svc-price-box--white">
             <div class="svc-price">
               <span class="old">270 / 350 / 420 BYN</span>
               <span class="now sale">200 / 270 / 350 BYN 🔥</span>
