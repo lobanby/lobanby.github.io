@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loban.by - Персональный стилист</title>
+  <meta name="description" content="Loban.by - персональный стилист. Эксперт по типажам Kibbe / Larson и системе 12 цветотипов. Онлайн и оффлайн по всему миру." />
+  <meta name="theme-color" content="#0b1630" />
+
+  <style>
+    :root{
+      --bg:#0b1630;
+      --fg:#f3efe6;
+      --muted:rgba(243,239,230,.72);
+      --line:rgba(243,239,230,.18);
+      --card:rgba(243,239,230,.06);
+      --card2:rgba(243,239,230,.08);
+      --focus:rgba(243,239,230,.35);
+      --shadow: 0 18px 55px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1020px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 800px at 20% 10%, rgba(243,239,230,.08), transparent 55%),
+                  radial-gradient(900px 650px at 90% 25%, rgba(243,239,230,.05), transparent 60%),
+                  var(--bg);
+      color:var(--fg);
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      letter-spacing:.2px;
+      -webkit-font-smoothing: antialiased;
+      line-height:1.55;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 80px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 0 22px;
+      border-bottom:1px solid var(--line);
+      position:sticky; top:0;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,22,48,.85), rgba(11,22,48,.55));
+      z-index:20;
+    }
+    .brand{
+      display:flex; align-items:baseline; gap:10px;
+      text-transform:uppercase;
+      letter-spacing:2.2px;
+      font-size:15px;
+    }
+    .brand small{opacity:.75; letter-spacing:1.6px; font-size:12px}
+
+    .navlinks{display:flex; gap:16px; flex-wrap:wrap}
+    .navlinks a{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:13px;
+      opacity:.8;
+      padding:8px 10px;
+      border-radius:999px;
+      transition:opacity .15s ease, background .15s ease;
+    }
+    .navlinks a:hover{opacity:1; background:rgba(243,239,230,.06)}
+    .navcta{display:flex; gap:10px; align-items:center}
+
+    .btn{
+      cursor:pointer;
+      border:1px solid var(--line);
+      background: transparent;
+      color:var(--fg);
+      padding:10px 14px;
+      border-radius:999px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:13px;
+      letter-spacing:.3px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{background:rgba(243,239,230,.06)}
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{background:rgba(243,239,230,.10)}
+    .btn.primary:hover{background:rgba(243,239,230,.14)}
+    .btn:focus{outline:none; box-shadow: 0 0 0 3px var(--focus)}
+
+    .hero{padding:44px 0 34px}
+    .kicker{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      font-size:12px;
+      color:var(--muted);
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size:52px;
+      line-height:1.05;
+      letter-spacing:2.6px;
+      text-transform:uppercase;
+    }
+    .subtitle{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--muted);
+      max-width:720px;
+      font-size:16px;
+    }
+    .hero-cta{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      margin-top:22px;
+    }
+    @media (max-width: 880px){
+      .grid{grid-template-columns:1fr}
+      h1{font-size:42px}
+    }
+
+    .card{
+      background:linear-gradient(to bottom, var(--card), transparent);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px 16px;
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:.4px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      text-transform:uppercase;
+    }
+    .muted{color:var(--muted)}
+    .section{margin-top:26px}
+    .sectionhead{
+      display:flex; justify-content:space-between; align-items:flex-end; gap:12px; flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .sectionhead h3{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .sectionhead p{margin:0; color:var(--muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px}
+
+    .services{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width: 880px){ .services{grid-template-columns:1fr} }
+
+    .svc{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px 14px;
+      background:linear-gradient(to bottom, var(--card2), transparent);
+    }
+    .svc-top{display:flex; justify-content:space-between; gap:12px}
+    .svc-title{font-size:16px; margin:0; letter-spacing:.3px}
+    .svc-title span{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight:600;
+      text-transform:none;
+      letter-spacing:.2px;
+    }
+    .svc-price{
+      text-align:right;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .svc-price .old{opacity:.55; text-decoration:line-through; display:block; margin-bottom:2px}
+    .svc-price .now{font-weight:700; font-size:14px}
+    .svc-note{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:12px;
+    }
+    .svc-short{margin:10px 0 0; color:var(--muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px}
+    .svc-actions{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap}
+
+    .acc{
+      margin-top:10px;
+      border-top:1px solid var(--line);
+      padding-top:10px;
+      display:none;
+    }
+    .acc.open{display:block}
+    .acc p{margin:0 0 10px}
+    .acc ul{margin:0; padding-left:18px}
+    .acc li{margin:6px 0}
+    .acc li::marker{color:rgba(243,239,230,.55)}
+
+    .rule{
+      border-top:1px solid var(--line);
+      margin:22px 0 0;
+      padding-top:14px;
+    }
+
+    .blog{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width: 880px){ .blog{grid-template-columns:1fr} }
+
+    .post{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px 14px;
+      background:linear-gradient(to bottom, rgba(243,239,230,.055), transparent);
+    }
+    .post time{
+      display:block;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:12px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+    .post h4{margin:10px 0 6px; font-size:16px}
+    .post p{margin:0; color:var(--muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px}
+
+    .footer{
+      margin-top:34px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+      color:var(--muted);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:13px;
+    }
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed; inset:0;
+      display:none;
+      background:rgba(0,0,0,.55);
+      backdrop-filter: blur(8px);
+      z-index:60;
+      padding:18px;
+    }
+    .modal-backdrop.open{display:flex; align-items:center; justify-content:center}
+    .modal{
+      width:min(720px, 100%);
+      background:linear-gradient(to bottom, rgba(11,22,48,.96), rgba(11,22,48,.90));
+      border:1px solid var(--line);
+      border-radius:22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modal-header{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 14px;
+      border-bottom:1px solid var(--line);
+    }
+    .modal-header strong{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.8px;
+      font-size:13px;
+    }
+    .modal-body{padding:14px}
+    .formgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    @media (max-width: 640px){ .formgrid{grid-template-columns:1fr} }
+
+    label{
+      display:block;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:6px;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+    }
+    input, select, textarea{
+      width:100%;
+      background:rgba(243,239,230,.06);
+      border:1px solid rgba(243,239,230,.18);
+      color:var(--fg);
+      border-radius:12px;
+      padding:11px 12px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:14px;
+      outline:none;
+    }
+    textarea{min-height:110px; resize:vertical}
+    input:focus, select:focus, textarea:focus{box-shadow:0 0 0 3px var(--focus)}
+    .form-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; align-items:center}
+    .tiny{margin-top:10px; color:var(--muted); font-size:12px; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
+    .ok{
+      display:none;
+      margin-top:10px;
+      padding:10px 12px;
+      border:1px solid rgba(243,239,230,.24);
+      border-radius:14px;
+      background:rgba(243,239,230,.06);
+      color:var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:13px;
+    }
+    .ok.show{display:block}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="nav" aria-label="Навигация">
+      <div class="brand">
+        <div>LOBAN</div>
+        <small>Loban.by</small>
+      </div>
+
+      <nav class="navlinks" aria-label="Разделы">
+        <a href="#about">Обо мне</a>
+        <a href="#services">Услуги</a>
+        <a href="#blog">Блог</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="navcta">
+        <button class="btn primary" data-open-order>Записаться</button>
+      </div>
+    </header>
+
+    <section class="hero" aria-label="Главный экран">
+      <div class="kicker">Персональный стилист</div>
+      <h1>LOBAN</h1>
+      <p class="subtitle">
+        Эксперт по типажам Kibbe / Larson и системе 12 цветотипов.
+        Архитектура внешности, линии, цвет, пропорции.
+        Работаю онлайн и оффлайн по всему миру.
+      </p>
+
+      <div class="hero-cta">
+        <button class="btn primary" data-open-order>Записаться</button>
+        <a class="btn" href="#services">Смотреть услуги</a>
+      </div>
+
+      <div class="grid">
+        <div class="card" id="about">
+          <h2>Обо мне</h2>
+          <p class="muted" style="margin:0">
+            Я работаю с архитектурой внешности, а не с трендами.
+            Типаж, цвет, пропорции и характер линий формируют основу стиля.
+            Моя задача - помочь вам увидеть собственную систему и опираться на неё.
+            Без перегруза и случайных решений.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Подход</h2>
+          <p class="muted" style="margin:0">
+            Типаж задаёт направление линий.
+            Цветотип - глубину и температуру оттенков.
+            Пропорции - масштаб деталей.
+            Когда параметры согласованы, образ выглядит гармонично и уверенно.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services" aria-label="Услуги">
+      <div class="sectionhead">
+        <h3>Услуги</h3>
+        <p>Каждая услуга - самостоятельный продукт с понятным результатом.</p>
+      </div>
+
+      <div class="services">
+
+        <!-- 1 -->
+        <article class="svc">
+          <div class="svc-top">
+            <h4 class="svc-title"><span>Консультация по типажу + цветотипу</span></h4>
+            <div class="svc-price">
+              <span class="now">50 BYN</span>
+            </div>
+          </div>
+          <p class="svc-short">Базовый разбор архитектуры внешности и направлений в одежде.</p>
+          <div class="svc-actions">
+            <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn primary" data-open-order data-service="Консультация по типажу + цветотипу">Заказать</button>
+            <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
+          </div>
+          <div class="acc" aria-hidden="true">
+            <p class="muted">
+              Определение типажа Kibbe / Larson и цветотипа по системе 12 сезонов.
+              Анализ пропорций, линий, контрастности и глубины цвета.
+            </p>
+            <ul class="muted">
+              <li>Рекомендации По Силуэтам И Базовым Фасонам.</li>
+              <li>Рекомендации По Палитре И Сочетаниям.</li>
+              <li>Бонус По Фасонам, Которые Поддерживают Ваш Типаж.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="svc">
+          <div class="svc-top">
+            <h4 class="svc-title"><span>Расширенная консультация + мини-гайд</span></h4>
+            <div class="svc-price">
+              <span class="old">150 BYN</span>
+              <span class="now">100 BYN</span>
+              <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
+            </div>
+          </div>
+          <p class="svc-short">Глубокий системный разбор + PDF с закреплёнными рекомендациями.</p>
+          <div class="svc-actions">
+            <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn primary" data-open-order data-service="Расширенная консультация + мини-гайд">Заказать</button>
+            <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
+          </div>
+          <div class="acc" aria-hidden="true">
+            <p class="muted">
+              Полный анализ типажа и цветотипа. Рекомендации по длинам, фактурам, плотности ткани и принтам.
+              Разбор аксессуаров и баланса деталей.
+            </p>
+            <ul class="muted">
+              <li>Персональная Палитра И Примеры Сочетаний.</li>
+              <li>Ориентиры По Посадке, Длинам И Степени Структурности.</li>
+              <li>Мини-гайд В PDF Для Дальнейших Покупок.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="svc">
+          <div class="svc-top">
+            <h4 class="svc-title"><span>Расширенная консультация + мини-гайд + причёски</span></h4>
+            <div class="svc-price">
+              <span class="old">200 BYN</span>
+              <span class="now">150 BYN</span>
+              <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
+            </div>
+          </div>
+          <p class="svc-short">Целостный образ с учётом волос, формы и направления линий.</p>
+          <div class="svc-actions">
+            <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn primary" data-open-order data-service="Расширенная консультация + мини-гайд + причёски">Заказать</button>
+            <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
+          </div>
+          <div class="acc" aria-hidden="true">
+            <p class="muted">
+              Всё из расширенной консультации плюс рекомендации по длине, форме стрижки, объёму и текстуре.
+              Подбираем решения, которые поддерживают типаж и общий стиль.
+            </p>
+            <ul class="muted">
+              <li>Ориентиры По Длине И Направлению Линий.</li>
+              <li>Варианты Стрижек И Укладок Под Типаж.</li>
+              <li>Баланс Деталей В Образе С Учётом Волос.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="svc">
+          <div class="svc-top">
+            <h4 class="svc-title"><span>Персональный лукбук</span></h4>
+            <div class="svc-price">
+              <span class="now">200 BYN</span>
+            </div>
+          </div>
+          <p class="svc-short">Система образов под ваш типаж и цвет. С артикулами и примерами фасонов.</p>
+          <div class="svc-actions">
+            <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn primary" data-open-order data-service="Персональный лукбук">Заказать</button>
+            <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
+          </div>
+          <div class="acc" aria-hidden="true">
+            <p class="muted">
+              Лукбук создаётся на основе анализа типажа Kibbe / Larson и цветотипа 12 сезонов.
+              Учитываются линии, пропорции, контрастность, глубина цвета и степень структурности.
+            </p>
+            <ul class="muted">
+              <li>Примеры Фасонов, Длин И Посадки Под Типаж.</li>
+              <li>Цветовые Сочетания И Рабочая Палитра.</li>
+              <li>Готовые Комплекты Под Разные Ситуации.</li>
+              <li>Артикулы И Ссылки При Онлайн-формате.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 5 -->
+        <article class="svc">
+          <div class="svc-top">
+            <h4 class="svc-title"><span>Расширенная консультация + расширенный персональный лукбук</span></h4>
+            <div class="svc-price">
+              <span class="old">300 BYN</span>
+              <span class="now">250 BYN</span>
+              <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
+            </div>
+          </div>
+          <p class="svc-short">Полная стилевая стратегия и расширенная подборка образов.</p>
+          <div class="svc-actions">
+            <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn primary" data-open-order data-service="Расширенная консультация + расширенный персональный лукбук">Заказать</button>
+            <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
+          </div>
+          <div class="acc" aria-hidden="true">
+            <p class="muted">
+              Глубокий разбор внешности плюс расширенный лукбук с вариациями комплектов.
+              Упор на сезонность и масштабирование гардероба.
+            </p>
+            <ul class="muted">
+              <li>Больше Вариантов Комплектов И Стилизаций.</li>
+              <li>Рекомендации По Аксессуарам И Деталям.</li>
+              <li>Логика Гардероба На Перспективу.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 6 -->
+        <article class="svc">
+          <div class="svc-top">
+            <h4 class="svc-title"><span>Онлайн-шоппинг / Оффлайн-шоппинг</span></h4>
+            <div class="svc-price">
+              <span class="now">40 BYN / час</span>
+              <div class="svc-note">70 BYN / 2 часа · 100 BYN / 3 часа</div>
+            </div>
+          </div>
+          <p class="svc-short">Точный отбор вещей под типаж и задачу. Без лишних покупок.</p>
+          <div class="svc-actions">
+            <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn primary" data-open-order data-service="Онлайн-шоппинг / Оффлайн-шоппинг">Заказать</button>
+            <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
+          </div>
+          <div class="acc" aria-hidden="true">
+            <p class="muted">
+              Совместный подбор вещей с учётом типажа, цветотипа и сценария жизни.
+              Работаю онлайн и оффлайн по всему миру.
+            </p>
+            <ul class="muted">
+              <li>Отбор По Форме, Посадке И Фактурам.</li>
+              <li>Сбор Комплектов Из Того, Что Реально Носится.</li>
+              <li>Снижение Риска Случайных Покупок.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 7 -->
+        <article class="svc">
+          <div class="svc-top">
+            <h4 class="svc-title"><span>Подбор образа под событие</span></h4>
+            <div class="svc-price">
+              <span class="now">30 BYN</span>
+            </div>
+          </div>
+          <p class="svc-short">Решение под конкретное мероприятие и дресс-код.</p>
+          <div class="svc-actions">
+            <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn primary" data-open-order data-service="Подбор образа под событие">Заказать</button>
+            <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
+          </div>
+          <div class="acc" aria-hidden="true">
+            <p class="muted">
+              Подбираем комплект с учётом формата события, уместности и вашей индивидуальности.
+              Баланс деталей, линия силуэта и цвет.
+            </p>
+            <ul class="muted">
+              <li>Целостный Комплект С Деталями.</li>
+              <li>Проверка Уместности И Акцентов.</li>
+              <li>Чёткое Понимание, Почему Это Работает.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 8 -->
+        <article class="svc">
+          <div class="svc-top">
+            <h4 class="svc-title"><span>Полное сопровождение</span></h4>
+            <div class="svc-price">
+              <span class="old">270 / 350 / 420 BYN</span>
+              <span class="now">200 / 270 / 350 BYN</span>
+              <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
+            </div>
+          </div>
+          <p class="svc-short">Комплексная работа: консультация, гардероб, шоппинг, образы.</p>
+          <div class="svc-actions">
+            <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn primary" data-open-order data-service="Полное сопровождение">Заказать</button>
+            <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
+          </div>
+          <div class="acc" aria-hidden="true">
+            <p class="muted">
+              Работа в формате сопровождения на выбранный срок. Поддержка, корректировка решений, сбор системы.
+            </p>
+            <ul class="muted">
+              <li>3 Дня - 200 BYN.</li>
+              <li>5 Дней - 270 BYN.</li>
+              <li>7 Дней - 350 BYN.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 9 -->
+        <article class="svc">
+          <div class="svc-top">
+            <h4 class="svc-title"><span>Аудит гардероба</span></h4>
+            <div class="svc-price">
+              <span class="now">40 BYN / час</span>
+            </div>
+          </div>
+          <p class="svc-short">Структура и ясность: что оставить, что заменить, что докупить.</p>
+          <div class="svc-actions">
+            <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn primary" data-open-order data-service="Аудит гардероба">Заказать</button>
+            <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
+          </div>
+          <div class="acc" aria-hidden="true">
+            <p class="muted">
+              Разбор текущих вещей, логика сочетаний, выявление пробелов.
+              Формируем понятный план действий под ваши задачи.
+            </p>
+            <ul class="muted">
+              <li>Сильные Вещи И Ошибки В Посадке.</li>
+              <li>Список Приоритетных Покупок.</li>
+              <li>Сбор Мини-системы На Каждый День.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="rule muted">
+        Работаю онлайн и оффлайн по всему миру.
+      </div>
+    </section>
+
+    <section class="section" id="blog" aria-label="Блог">
+      <div class="sectionhead">
+        <h3>Блог</h3>
+        <p>Ты пришлёшь статью - я оформлю её в стиль сайта.</p>
+      </div>
+
+      <div class="blog">
+        <article class="post">
+          <time datetime="2026-03-01">Март 2026</time>
+          <h4>Как читать свой типаж без перегруза</h4>
+          <p>Короткая логика: линии, масштаб, структура. Без лишнего шума.</p>
+        </article>
+
+        <article class="post">
+          <time datetime="2026-03-01">Март 2026</time>
+          <h4>12 цветотипов: зачем вам глубина и температура</h4>
+          <p>Почему один и тот же оттенок может выглядеть либо дорого, либо случайно.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contacts" aria-label="Контакты">
+      <div class="sectionhead">
+        <h3>Контакты</h3>
+        <p>Запись через форму или Telegram.</p>
+      </div>
+
+      <div class="card">
+        <p style="margin:0" class="muted">
+          Telegram: <a href="https://t.me/aesth_maryl" target="_blank" rel="noopener">@aesth_maryl</a><br />
+          Instagram: <a href="https://www.instagram.com/loban.by/" target="_blank" rel="noopener">@loban.by</a>
+        </p>
+        <div class="hero-cta" style="margin-top:12px">
+          <button class="btn primary" data-open-order>Открыть форму</button>
+          <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Написать в Telegram</a>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div>
+          <div style="letter-spacing:2px; text-transform:uppercase; color:var(--fg)">LOBAN</div>
+          <div>Loban.by</div>
+        </div>
+        <div>
+          <div>Онлайн и оффлайн по всему миру.</div>
+          <div>
+            <a href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
+            <span style="opacity:.5"> · </span>
+            <a href="https://www.instagram.com/loban.by/" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
+      </footer>
+    </section>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="orderModal" role="dialog" aria-modal="true" aria-label="Форма записи">
+    <div class="modal">
+      <div class="modal-header">
+        <strong>Запись</strong>
+        <button class="btn" id="closeModal" type="button">Закрыть</button>
+      </div>
+      <div class="modal-body">
+        <!--
+          Чтобы заявки реально приходили, укажи endpoint формы (без сервера).
+          Пример для Formspree: action="https://formspree.io/f/XXXXYYYY"
+        -->
+        <form id="orderForm" method="POST" action="">
+          <div class="formgrid">
+            <div>
+              <label for="name">Имя</label>
+              <input id="name" name="Имя" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="contact">Контакт</label>
+              <input id="contact" name="Контакт" placeholder="@telegram или телефон или email" required />
+            </div>
+            <div>
+              <label for="service">Услуга</label>
+              <select id="service" name="Услуга" required>
+                <option value="" selected disabled>Выберите услугу</option>
+                <option>Консультация по типажу + цветотипу</option>
+                <option>Расширенная консультация + мини-гайд</option>
+                <option>Расширенная консультация + мини-гайд + причёски</option>
+                <option>Персональный лукбук</option>
+                <option>Расширенная консультация + расширенный персональный лукбук</option>
+                <option>Онлайн-шоппинг / Оффлайн-шоппинг</option>
+                <option>Подбор образа под событие</option>
+                <option>Полное сопровождение</option>
+                <option>Аудит гардероба</option>
+              </select>
+            </div>
+            <div>
+              <label for="format">Формат</label>
+              <select id="format" name="Формат" required>
+                <option value="Онлайн" selected>Онлайн</option>
+                <option value="Оффлайн">Оффлайн</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <label for="message">Комментарий</label>
+            <textarea id="message" name="Комментарий" placeholder="Город, часовой пояс, дата, дополнительные пожелания"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn primary" type="submit">Отправить заявку</button>
+            <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Написать в Telegram</a>
+          </div>
+
+          <div class="tiny">Я отвечаю лично в течение 24 часов.</div>
+          <div class="ok" id="okBox">Заявка отправлена. Я скоро отвечу.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Accordion
+    document.querySelectorAll('[data-toggle-details]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const svc = btn.closest('.svc');
+        const acc = svc.querySelector('.acc');
+        const isOpen = acc.classList.contains('open');
+        acc.classList.toggle('open', !isOpen);
+        acc.setAttribute('aria-hidden', String(isOpen));
+        btn.textContent = isOpen ? 'Подробнее' : 'Скрыть';
+      });
+    });
+
+    // Modal open/close + service prefill
+    const modal = document.getElementById('orderModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const serviceSelect = document.getElementById('service');
+    const okBox = document.getElementById('okBox');
+    const form = document.getElementById('orderForm');
+
+    function openModal(serviceName){
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      okBox.classList.remove('show');
+
+      if(serviceName){
+        const options = Array.from(serviceSelect.options);
+        const found = options.find(o => o.text.trim() === serviceName.trim());
+        if(found) serviceSelect.value = found.text;
+      }
+      setTimeout(() => document.getElementById('name').focus(), 50);
+    }
+
+    function closeModal(){
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-open-order]').forEach((btn) => {
+      btn.addEventListener('click', () => openModal(btn.getAttribute('data-service') || ''));
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+    // Form submit
+    // Если action пустой, показываем "успешно" локально (для теста).
+    // Чтобы заявки реально приходили - добавь endpoint (например Formspree).
+    form.addEventListener('submit', async (e) => {
+      const action = (form.getAttribute('action') || '').trim();
+      if(!action){
+        e.preventDefault();
+        okBox.classList.add('show');
+        form.reset();
+        return;
+      }
+
+      e.preventDefault();
+      try{
+        const fd = new FormData(form);
+        const resp = await fetch(action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+        if(resp.ok){
+          okBox.classList.add('show');
+          form.reset();
+        } else {
+          alert('Не получилось отправить заявку. Напишите в Telegram.');
+        }
+      } catch(err){
+        alert('Не получилось отправить заявку. Напишите в Telegram.');
+      }
+    });
+  </script>
+</body>
+</html>
