@@ -214,11 +214,19 @@
     }
 
     .card{
-      background:var(--card);
-      border:1px solid var(--line);
+      background:linear-gradient(145deg, #3a3a4a 0%, #2d2d3d 40%, #252535 100%);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 6px 20px rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.15);
       border-radius:var(--radius);
       padding:18px 16px;
       color:var(--fg);
+    }
+    .card-quote{
+      font-style:italic;
+      padding-left:16px;
+      border-left:3px solid rgba(243,239,230,.4);
+      margin:0 0 14px;
+      color:rgba(243,239,230,.95);
     }
     .card h2{
       margin:0 0 10px;
@@ -242,19 +250,20 @@
     }
     .sectionhead p{margin:0; color:var(--page-muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px}
 
-    .services{display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:start}
+    .services{display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch}
     @media (max-width: 880px){ .services{grid-template-columns:1fr} }
 
     .svc{
-      border:1px solid var(--line);
+      border:1px solid rgba(255,255,255,.15);
       border-radius:var(--radius);
       padding:18px 16px;
-      background:var(--card2);
+      background:linear-gradient(145deg, #3a3a4a 0%, #2d2d3d 40%, #252535 100%);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 6px 20px rgba(0,0,0,.25);
       color:var(--fg);
       display:flex; flex-direction:column; gap:0;
       min-width:0;
     }
-    .svc-title{margin:0 0 8px; font-size:17px; letter-spacing:.3px}
+    .svc-title{margin:0 0 8px; font-size:19px; letter-spacing:.3px}
     .svc-title span{
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-weight:600;
@@ -310,10 +319,11 @@
     @media (max-width: 880px){ .blog{grid-template-columns:1fr} }
 
     .post{
-      border:1px solid var(--line);
+      border:1px solid rgba(255,255,255,.15);
       border-radius:var(--radius);
       padding:16px 14px;
-      background:var(--card2);
+      background:linear-gradient(145deg, #3a3a4a 0%, #2d2d3d 40%, #252535 100%);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 6px 20px rgba(0,0,0,.25);
       color:var(--fg);
     }
     .post time{
@@ -485,30 +495,17 @@
       <div class="grid">
         <div class="card" id="about">
           <h2>Обо мне</h2>
-          <p class="muted" style="margin:0 0 12px">
-            Я верю, что стиль начинается с понимания себя.
-          </p>
-          <p class="muted" style="margin:0 0 12px">
-            Я помогаю увидеть то, что уже заложено в вашей внешности.
-          </p>
-          <p class="muted" style="margin:0 0 12px">
-            Типаж и цвет - это не ограничения, а ориентиры. Когда они учтены, образ собирается легко и выглядит естественно.
-          </p>
-          <p class="muted" style="margin:0 0 12px">
-            Моя работа - не навязать стиль, а выстроить систему, в которой вам комфортно. Без перегруза, без случайных покупок, без сомнений перед зеркалом.
-          </p>
+          <p class="card-quote">Я работаю с архитектурой внешности, а не с трендами.</p>
           <p class="muted" style="margin:0">
-            Стиль становится устойчивым, когда он опирается на ваши природные данные - и тогда он начинает работать на вас.
+            Типаж, цвет, пропорции и характер линий формируют основу стиля. Моя задача - помочь вам увидеть собственную систему и опираться на неё. Без перегруза и случайных решений.
           </p>
         </div>
 
         <div class="card">
           <h2>Подход</h2>
+          <p class="card-quote">Типаж задаёт направление линий.</p>
           <p class="muted" style="margin:0">
-            Типаж задаёт направление линий.
-            Цветотип - глубину и температуру оттенков.
-            Пропорции - масштаб деталей.
-            Когда параметры согласованы, образ выглядит гармонично и уверенно.
+            Цветотип - глубину и температуру оттенков. Пропорции - масштаб деталей. Когда параметры согласованы, образ выглядит гармонично и уверенно.
           </p>
         </div>
       </div>
