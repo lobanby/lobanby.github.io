@@ -9,12 +9,12 @@
 
   <style>
     :root{
-      --bg:#0b1630;
+      --bg:#0b014b;
       --fg:#f3efe6;
       --muted:rgba(243,239,230,.72);
       --line:rgba(243,239,230,.18);
-      --card:rgba(11,22,48,.92);
-      --card2:rgba(11,22,48,.88);
+      --card:#0b014b;
+      --card2:#0b014b;
       --focus:rgba(243,239,230,.35);
       --shadow: 0 18px 55px rgba(0,0,0,.2);
       --radius: 18px;
@@ -25,7 +25,8 @@
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html{overflow-x:hidden; width:100%}
+    body{height:100%; overflow-x:hidden; width:100%; min-width:0}
     body{
       margin:0;
       background:var(--page-bg);
@@ -34,15 +35,17 @@
       letter-spacing:.2px;
       -webkit-font-smoothing: antialiased;
       line-height:1.55;
+      overflow-wrap:break-word;
+      word-wrap:break-word;
     }
 
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 80px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 80px; width:100%; min-width:0; overflow-x:hidden}
     .nav{
       width:100%;
       position:sticky; top:0;
       backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(11,22,48,.95), rgba(11,22,48,.9));
+      background: linear-gradient(to bottom, rgba(11,1,75,.95), rgba(11,1,75,.9));
       z-index:20;
       border-bottom:1px solid rgba(243,239,230,.12);
     }
@@ -69,7 +72,8 @@
     .navlinks a{
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-size:14px;
-      opacity:.85;
+      color:#fff;
+      opacity:.9;
       padding:8px 12px;
       border-radius:999px;
       transition:opacity .15s ease, background .15s ease;
@@ -93,8 +97,10 @@
     .nav-expand-wrap{display:none}
     .nav-sublinks{display:none}
 
+    img{max-width:100%; height:auto}
     @media (max-width: 720px){
-      .nav-inner{display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px}
+      .wrap{padding-left:14px; padding-right:14px}
+      .nav-inner{display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px; padding-left:14px; padding-right:14px}
       .logo{justify-self:start}
       .navcta{justify-self:center}
       .burger{display:flex; align-items:center; justify-content:center; justify-self:end}
@@ -104,7 +110,7 @@
       .navlinks{
         display:none;
         position:fixed; inset:0;
-        background:rgba(11,22,48,.98);
+        background:rgba(11,1,75,.98);
         backdrop-filter:blur(12px);
         flex-direction:column;
         justify-content:flex-start;
@@ -117,17 +123,18 @@
       }
       @keyframes navFadeIn{from{opacity:0} to{opacity:1}}
       .navlinks.open{display:flex}
-      .navlinks > .nav-link{border-bottom:1px solid var(--line); padding:18px 0; font-size:18px}
+      .navlinks{flex-direction:column; align-items:stretch; text-align:left}
+      .navlinks > .nav-link{border-bottom:1px solid var(--line); padding:18px 0; font-size:18px; color:#fff}
       .navlinks > .nav-link:last-of-type{border-bottom:none}
-      .navlinks > .nav-item-services{border-bottom:1px solid var(--line); padding:0}
+      .navlinks > .nav-item-services{border-bottom:1px solid var(--line); padding:0; flex-direction:column; align-items:stretch}
       .navlinks > .nav-item-services .nav-expand-trigger{padding:18px 0}
-      .nav-item-services{display:flex; flex-direction:column; gap:0; border:none}
+      .nav-item-services{display:flex; flex-direction:column; gap:0; border:none; align-items:stretch}
       .nav-link-services-desk{display:none}
-      .nav-expand-wrap{display:flex; flex-direction:column; gap:0}
+      .nav-expand-wrap{display:flex; flex-direction:column; gap:0; align-items:stretch}
       .nav-expand-trigger{
         width:100%; text-align:left;
         background:transparent; border:none;
-        color:var(--fg); font-size:18px;
+        color:#fff; font-size:18px;
         font-family:ui-sans-serif, system-ui, -apple-system, sans-serif;
         cursor:pointer;
         padding:0; margin:0;
@@ -136,13 +143,13 @@
       .nav-expand-trigger::after{content:'▾'; font-size:14px; opacity:.7; transition:transform .2s}
       .nav-item-services.open .nav-expand-trigger::after{transform:rotate(180deg)}
       .nav-sublinks{
-        display:none; flex-direction:column; gap:0;
-        padding:8px 0 16px 20px; border:none;
+        display:none; flex-direction:column; gap:0; align-items:stretch;
+        padding:8px 0 16px 0; border:none;
         max-height:50vh; overflow-y:auto;
       }
       .nav-item-services.open .nav-sublinks{display:flex}
-      .nav-sublinks a{font-size:15px; color:var(--muted); padding:12px 0; border:none; line-height:1.3}
-      .nav-sublinks a:hover{color:var(--fg)}
+      .nav-sublinks a{font-size:16px; color:rgba(255,255,255,.8); padding:12px 0; border:none; line-height:1.4; text-align:left}
+      .nav-sublinks a:hover{color:#fff}
     }
 
     .btn{
@@ -202,9 +209,12 @@
       .grid{grid-template-columns:1fr}
       h1{font-size:42px}
     }
+    @media (max-width: 420px){
+      h1{font-size:32px; letter-spacing:1.5px}
+    }
 
     .card{
-      background:linear-gradient(to bottom, var(--card), rgba(11,22,48,.85));
+      background:var(--card);
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:18px 16px;
@@ -232,46 +242,53 @@
     }
     .sectionhead p{margin:0; color:var(--page-muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px}
 
-    .services{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    .services{display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:start}
     @media (max-width: 880px){ .services{grid-template-columns:1fr} }
 
     .svc{
       border:1px solid var(--line);
       border-radius:var(--radius);
-      padding:16px 14px;
-      background:linear-gradient(to bottom, var(--card2), rgba(11,22,48,.82));
+      padding:18px 16px;
+      background:var(--card2);
       color:var(--fg);
+      display:flex; flex-direction:column; gap:0;
+      min-width:0;
     }
-    .svc-top{display:flex; justify-content:space-between; gap:12px}
-    .svc-title{font-size:16px; margin:0; letter-spacing:.3px}
+    .svc-title{margin:0 0 8px; font-size:17px; letter-spacing:.3px}
     .svc-title span{
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-weight:600;
       text-transform:none;
       letter-spacing:.2px;
     }
-    .svc-price{
-      text-align:right;
+    .svc-short{margin:0 0 12px; color:var(--muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px; line-height:1.45}
+    .svc-price-box{
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:10px 14px;
+      margin-bottom:14px;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size:13px;
-      white-space:nowrap;
     }
-    .svc-price .old{opacity:.55; text-decoration:line-through; display:block; margin-bottom:2px}
-    .svc-price .now{font-weight:700; font-size:14px}
+    .svc-price .old{opacity:.6; text-decoration:line-through; font-size:12px; margin-bottom:2px}
+    .svc-price .now{font-weight:700; font-size:16px}
+    .svc-price .now.sale{font-size:18px}
     .svc-note{
       margin:6px 0 0;
       color:var(--muted);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size:12px;
+      font-size:11px;
     }
-    .svc-short{margin:10px 0 0; color:var(--muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px}
-    .svc-actions{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap}
+    .svc-actions{display:flex; gap:8px; flex-wrap:wrap}
 
     .acc{
       margin-top:10px;
       border-top:1px solid var(--line);
       padding-top:10px;
       display:none;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:13px;
+      line-height:1.45;
+      color:var(--muted);
     }
     .acc.open{display:block}
     .acc p{margin:0 0 10px}
@@ -293,7 +310,7 @@
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:16px 14px;
-      background:linear-gradient(to bottom, var(--card2), rgba(11,22,48,.82));
+      background:var(--card2);
       color:var(--fg);
     }
     .post time{
@@ -330,7 +347,7 @@
     .modal-backdrop.open{display:flex; align-items:center; justify-content:center}
     .modal{
       width:min(720px, 100%);
-      background:linear-gradient(to bottom, rgba(11,22,48,.96), rgba(11,22,48,.90));
+      background:linear-gradient(to bottom, rgba(11,1,75,.96), rgba(11,1,75,.90));
       border:1px solid var(--line);
       border-radius:22px;
       box-shadow: var(--shadow);
@@ -495,16 +512,16 @@
 
         <!-- 1 -->
         <article class="svc" id="svc-1">
-          <div class="svc-top">
-            <h4 class="svc-title"><span>Консультация по типажу + цветотипу</span></h4>
+          <h4 class="svc-title"><span>Консультация по типажу + цветотипу</span></h4>
+          <p class="svc-short">Базовый разбор архитектуры внешности и направлений в одежде.</p>
+          <div class="svc-price-box">
             <div class="svc-price">
               <span class="now">50 BYN</span>
             </div>
           </div>
-          <p class="svc-short">Базовый разбор архитектуры внешности и направлений в одежде.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
-            <button class="btn" data-open-presentation data-presentation-url="presentations/1-consultation_compressed.pdf">Презентации</button>
+            <button class="btn" data-open-presentation data-presentation-url="presentations/1-consultation_compressed.pdf">Презентация</button>
             <button class="btn primary" data-open-order data-service="Консультация по типажу + цветотипу">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -526,18 +543,18 @@
 
         <!-- 2 -->
         <article class="svc" id="svc-2">
-          <div class="svc-top">
-            <h4 class="svc-title"><span>Расширенная консультация + мини-гайд</span></h4>
+          <h4 class="svc-title"><span>Расширенная консультация + мини-гайд</span></h4>
+          <p class="svc-short">Глубокий системный разбор + PDF с закреплёнными рекомендациями.</p>
+          <div class="svc-price-box">
             <div class="svc-price">
               <span class="old">150 BYN</span>
-              <span class="now">100 BYN 🔥</span>
+              <span class="now sale">100 BYN 🔥</span>
               <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
             </div>
           </div>
-          <p class="svc-short">Глубокий системный разбор + PDF с закреплёнными рекомендациями.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
-            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентация</button>
             <button class="btn primary" data-open-order data-service="Расширенная консультация + мини-гайд">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -559,18 +576,18 @@
 
         <!-- 3 -->
         <article class="svc" id="svc-3">
-          <div class="svc-top">
-            <h4 class="svc-title"><span>Расширенная консультация + мини-гайд + причёски</span></h4>
+          <h4 class="svc-title"><span>Расширенная консультация + мини-гайд + причёски</span></h4>
+          <p class="svc-short">Целостный образ с учётом волос, формы и направления линий.</p>
+          <div class="svc-price-box">
             <div class="svc-price">
               <span class="old">200 BYN</span>
-              <span class="now">150 BYN 🔥</span>
+              <span class="now sale">150 BYN 🔥</span>
               <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
             </div>
           </div>
-          <p class="svc-short">Целостный образ с учётом волос, формы и направления линий.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
-            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентация</button>
             <button class="btn primary" data-open-order data-service="Расширенная консультация + мини-гайд + причёски">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -592,16 +609,16 @@
 
         <!-- 4 -->
         <article class="svc" id="svc-4">
-          <div class="svc-top">
-            <h4 class="svc-title"><span>Персональный лукбук</span></h4>
+          <h4 class="svc-title"><span>Персональный лукбук</span></h4>
+          <p class="svc-short">Система образов под ваш типаж и цвет. С артикулами и примерами фасонов.</p>
+          <div class="svc-price-box">
             <div class="svc-price">
               <span class="now">200 BYN</span>
             </div>
           </div>
-          <p class="svc-short">Система образов под ваш типаж и цвет. С артикулами и примерами фасонов.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
-            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентация</button>
             <button class="btn primary" data-open-order data-service="Персональный лукбук">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -624,18 +641,18 @@
 
         <!-- 5 -->
         <article class="svc" id="svc-5">
-          <div class="svc-top">
-            <h4 class="svc-title"><span>Расширенная консультация + расширенный персональный лукбук</span></h4>
+          <h4 class="svc-title"><span>Расширенная консультация + расширенный персональный лукбук</span></h4>
+          <p class="svc-short">Полная стилевая стратегия и расширенная подборка образов.</p>
+          <div class="svc-price-box">
             <div class="svc-price">
               <span class="old">300 BYN</span>
-              <span class="now">250 BYN 🔥</span>
+              <span class="now sale">250 BYN 🔥</span>
               <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
             </div>
           </div>
-          <p class="svc-short">Полная стилевая стратегия и расширенная подборка образов.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
-            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентация</button>
             <button class="btn primary" data-open-order data-service="Расширенная консультация + расширенный персональный лукбук">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -657,17 +674,17 @@
 
         <!-- 6 -->
         <article class="svc" id="svc-6">
-          <div class="svc-top">
-            <h4 class="svc-title"><span>Онлайн-шоппинг / Оффлайн-шоппинг</span></h4>
+          <h4 class="svc-title"><span>Онлайн-шоппинг / Оффлайн-шоппинг</span></h4>
+          <p class="svc-short">Точный отбор вещей под типаж и задачу. Без лишних покупок.</p>
+          <div class="svc-price-box">
             <div class="svc-price">
               <span class="now">40 BYN / час</span>
               <div class="svc-note">70 BYN / 2 часа · 100 BYN / 3 часа</div>
             </div>
           </div>
-          <p class="svc-short">Точный отбор вещей под типаж и задачу. Без лишних покупок.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
-            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентация</button>
             <button class="btn primary" data-open-order data-service="Онлайн-шоппинг / Оффлайн-шоппинг">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -689,16 +706,16 @@
 
         <!-- 7 -->
         <article class="svc" id="svc-7">
-          <div class="svc-top">
-            <h4 class="svc-title"><span>Подбор образа под событие</span></h4>
+          <h4 class="svc-title"><span>Подбор образа под событие</span></h4>
+          <p class="svc-short">Решение под конкретное мероприятие и дресс-код.</p>
+          <div class="svc-price-box">
             <div class="svc-price">
               <span class="now">30 BYN</span>
             </div>
           </div>
-          <p class="svc-short">Решение под конкретное мероприятие и дресс-код.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
-            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентация</button>
             <button class="btn primary" data-open-order data-service="Подбор образа под событие">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -720,18 +737,18 @@
 
         <!-- 8 -->
         <article class="svc" id="svc-8">
-          <div class="svc-top">
-            <h4 class="svc-title"><span>Полное сопровождение</span></h4>
+          <h4 class="svc-title"><span>Полное сопровождение</span></h4>
+          <p class="svc-short">Комплексная работа: консультация, гардероб, шоппинг, образы.</p>
+          <div class="svc-price-box">
             <div class="svc-price">
               <span class="old">270 / 350 / 420 BYN</span>
-              <span class="now">200 / 270 / 350 BYN 🔥</span>
+              <span class="now sale">200 / 270 / 350 BYN 🔥</span>
               <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
             </div>
           </div>
-          <p class="svc-short">Комплексная работа: консультация, гардероб, шоппинг, образы.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
-            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентация</button>
             <button class="btn primary" data-open-order data-service="Полное сопровождение">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -752,16 +769,16 @@
 
         <!-- 9 -->
         <article class="svc" id="svc-9">
-          <div class="svc-top">
-            <h4 class="svc-title"><span>Аудит гардероба</span></h4>
+          <h4 class="svc-title"><span>Аудит гардероба</span></h4>
+          <p class="svc-short">Структура и ясность: что оставить, что заменить, что докупить.</p>
+          <div class="svc-price-box">
             <div class="svc-price">
               <span class="now">40 BYN / час</span>
             </div>
           </div>
-          <p class="svc-short">Структура и ясность: что оставить, что заменить, что докупить.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
-            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентация</button>
             <button class="btn primary" data-open-order data-service="Аудит гардероба">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
