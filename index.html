@@ -247,6 +247,14 @@
       box-shadow: var(--shadow);
       overflow:hidden;
     }
+    .modal.presentation-modal{ width:min(900px, 95vw); max-height:85vh; display:flex; flex-direction:column; }
+    .modal.presentation-modal .modal-body{ overflow-y:auto; flex:1; }
+    .presentation-content{ font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .presentation-content h4,.presentation-content h5{ margin:12px 0 8px; font-size:15px; }
+    .presentation-content p{ margin:0 0 10px; }
+    .presentation-content ul{ margin:0; padding-left:20px; }
+    .presentation-content li{ margin:6px 0; }
+    .presentation-placeholder{ color:var(--muted); font-style:italic; }
     .modal-header{
       display:flex; justify-content:space-between; align-items:center;
       padding:14px 14px;
@@ -377,6 +385,7 @@
           <p class="svc-short">Базовый разбор архитектуры внешности и направлений в одежде.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn" data-open-presentation data-presentation-url="presentations/1-consultation.pdf">Презентации</button>
             <button class="btn primary" data-open-order data-service="Консультация по типажу + цветотипу">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -390,6 +399,9 @@
               <li>Рекомендации По Палитре И Сочетаниям.</li>
               <li>Бонус По Фасонам, Которые Поддерживают Ваш Типаж.</li>
             </ul>
+          </div>
+          <div class="presentation-content" hidden>
+            <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
 
@@ -406,6 +418,7 @@
           <p class="svc-short">Глубокий системный разбор + PDF с закреплёнными рекомендациями.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
             <button class="btn primary" data-open-order data-service="Расширенная консультация + мини-гайд">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -419,6 +432,9 @@
               <li>Ориентиры По Посадке, Длинам И Степени Структурности.</li>
               <li>Мини-гайд В PDF Для Дальнейших Покупок.</li>
             </ul>
+          </div>
+          <div class="presentation-content" hidden>
+            <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
 
@@ -435,6 +451,7 @@
           <p class="svc-short">Целостный образ с учётом волос, формы и направления линий.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
             <button class="btn primary" data-open-order data-service="Расширенная консультация + мини-гайд + причёски">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -449,6 +466,9 @@
               <li>Баланс Деталей В Образе С Учётом Волос.</li>
             </ul>
           </div>
+          <div class="presentation-content" hidden>
+            <p class="presentation-placeholder">Презентация в разработке.</p>
+          </div>
         </article>
 
         <!-- 4 -->
@@ -462,6 +482,7 @@
           <p class="svc-short">Система образов под ваш типаж и цвет. С артикулами и примерами фасонов.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
             <button class="btn primary" data-open-order data-service="Персональный лукбук">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -476,6 +497,9 @@
               <li>Готовые Комплекты Под Разные Ситуации.</li>
               <li>Артикулы И Ссылки При Онлайн-формате.</li>
             </ul>
+          </div>
+          <div class="presentation-content" hidden>
+            <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
 
@@ -492,6 +516,7 @@
           <p class="svc-short">Полная стилевая стратегия и расширенная подборка образов.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
             <button class="btn primary" data-open-order data-service="Расширенная консультация + расширенный персональный лукбук">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -505,6 +530,9 @@
               <li>Рекомендации По Аксессуарам И Деталям.</li>
               <li>Логика Гардероба На Перспективу.</li>
             </ul>
+          </div>
+          <div class="presentation-content" hidden>
+            <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
 
@@ -520,6 +548,7 @@
           <p class="svc-short">Точный отбор вещей под типаж и задачу. Без лишних покупок.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
             <button class="btn primary" data-open-order data-service="Онлайн-шоппинг / Оффлайн-шоппинг">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -534,6 +563,9 @@
               <li>Снижение Риска Случайных Покупок.</li>
             </ul>
           </div>
+          <div class="presentation-content" hidden>
+            <p class="presentation-placeholder">Презентация в разработке.</p>
+          </div>
         </article>
 
         <!-- 7 -->
@@ -547,6 +579,7 @@
           <p class="svc-short">Решение под конкретное мероприятие и дресс-код.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
             <button class="btn primary" data-open-order data-service="Подбор образа под событие">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -560,6 +593,9 @@
               <li>Проверка Уместности И Акцентов.</li>
               <li>Чёткое Понимание, Почему Это Работает.</li>
             </ul>
+          </div>
+          <div class="presentation-content" hidden>
+            <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
 
@@ -576,6 +612,7 @@
           <p class="svc-short">Комплексная работа: консультация, гардероб, шоппинг, образы.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
             <button class="btn primary" data-open-order data-service="Полное сопровождение">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -588,6 +625,9 @@
               <li>5 Дней - 270 BYN.</li>
               <li>7 Дней - 350 BYN.</li>
             </ul>
+          </div>
+          <div class="presentation-content" hidden>
+            <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
 
@@ -602,6 +642,7 @@
           <p class="svc-short">Структура и ясность: что оставить, что заменить, что докупить.</p>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентации</button>
             <button class="btn primary" data-open-order data-service="Аудит гардероба">Заказать</button>
             <a class="btn" href="https://t.me/aesth_maryl" target="_blank" rel="noopener">Telegram</a>
           </div>
@@ -615,6 +656,9 @@
               <li>Список Приоритетных Покупок.</li>
               <li>Сбор Мини-системы На Каждый День.</li>
             </ul>
+          </div>
+          <div class="presentation-content" hidden>
+            <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
 
@@ -688,11 +732,7 @@
         <button class="btn" id="closeModal" type="button">Закрыть</button>
       </div>
       <div class="modal-body">
-        <!--
-          Чтобы заявки реально приходили, укажи endpoint формы (без сервера).
-          Пример для Formspree: action="https://formspree.io/f/XXXXYYYY"
-        -->
-        <form id="orderForm" method="POST" action="">
+        <form id="orderForm" method="POST" action="https://formspree.io/f/xykdqyrq">
           <div class="formgrid">
             <div>
               <label for="name">Имя</label>
@@ -743,6 +783,19 @@
     </div>
   </div>
 
+  <!-- Modal: Презентация услуги -->
+  <div class="modal-backdrop" id="presentationModal" role="dialog" aria-modal="true" aria-label="Презентация услуги">
+    <div class="modal presentation-modal">
+      <div class="modal-header">
+        <strong id="presentationTitle">Презентация</strong>
+        <button class="btn" id="closePresentationModal" type="button">Закрыть</button>
+      </div>
+      <div class="modal-body" id="presentationBody">
+        <!-- Контент подставляется через JS -->
+      </div>
+    </div>
+  </div>
+
   <script>
     // Accordion
     document.querySelectorAll('[data-toggle-details]').forEach((btn) => {
@@ -789,9 +842,43 @@
     modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
 
+    // Presentation modal
+    const presentationModal = document.getElementById('presentationModal');
+    const presentationTitle = document.getElementById('presentationTitle');
+    const presentationBody = document.getElementById('presentationBody');
+    const closePresentationModal = document.getElementById('closePresentationModal');
+
+    function openPresentationModal(svcArticle){
+      const titleEl = svcArticle.querySelector('.svc-title span');
+      const contentEl = svcArticle.querySelector('.presentation-content');
+      presentationTitle.textContent = titleEl ? titleEl.textContent : 'Презентация';
+      presentationBody.innerHTML = contentEl ? contentEl.innerHTML : '<p class="presentation-placeholder">Нет контента.</p>';
+      presentationModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePresentationModalFn(){
+      presentationModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-open-presentation]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const url = btn.getAttribute('data-presentation-url');
+        if(url && url !== '#') {
+          window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+          const svc = btn.closest('.svc');
+          if(svc) openPresentationModal(svc);
+        }
+      });
+    });
+
+    closePresentationModal.addEventListener('click', closePresentationModalFn);
+    presentationModal.addEventListener('click', (e) => { if(e.target === presentationModal) closePresentationModalFn(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && presentationModal.classList.contains('open')) closePresentationModalFn(); });
+
     // Form submit
-    // Если action пустой, показываем "успешно" локально (для теста).
-    // Чтобы заявки реально приходили - добавь endpoint (например Formspree).
     form.addEventListener('submit', async (e) => {
       const action = (form.getAttribute('action') || '').trim();
       if(!action){
