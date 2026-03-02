@@ -102,7 +102,7 @@
     .nav-sublinks{display:none}
 
     img{max-width:100%; height:auto}
-    @media (max-width: 720px){
+    @media (max-width: 880px){
       .wrap{padding-left:14px; padding-right:14px}
       .nav-inner{display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px; padding-left:14px; padding-right:14px}
       .logo{justify-self:start}
@@ -143,8 +143,9 @@
         cursor:pointer;
         padding:0; margin:0;
         display:flex; align-items:center; justify-content:space-between;
+        -webkit-tap-highlight-color:transparent;
       }
-      .nav-expand-trigger::after{content:'▾'; font-size:14px; opacity:.7; transition:transform .2s}
+      .nav-expand-trigger::after{content:'▼'; font-size:12px; margin-left:10px; color:#1a1a1a; opacity:1; transition:transform .2s; flex-shrink:0}
       .nav-item-services.open .nav-expand-trigger::after{transform:rotate(180deg)}
       .nav-sublinks{
         display:none; flex-direction:column; gap:0; align-items:stretch;
@@ -272,14 +273,14 @@
       display:flex; flex-direction:column; gap:0;
       min-width:0;
     }
-    .svc-title{margin:0 0 8px; font-size:19px; letter-spacing:.3px}
+    .svc-title{margin:0 0 8px; font-size:19px; letter-spacing:.3px; flex-shrink:0}
     .svc-title span{
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-weight:600;
       text-transform:none;
       letter-spacing:.2px;
     }
-    .svc-short{margin:0 0 12px; color:#5a5a5a; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px; line-height:1.45}
+    .svc-short{margin:0 0 12px; flex-shrink:0; color:#5a5a5a; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px; line-height:1.45}
     .svc-price-box{
       border:1px solid rgba(0,0,0,.12);
       border-radius:10px;
@@ -288,6 +289,11 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:#fff;
       color:#1a1a1a;
+      flex:1 1 0;
+      min-height:50px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
     }
     .svc-price-box--no-old .svc-price .old{display:none}
     .svc-price .old{opacity:.6; text-decoration:line-through; font-size:12px; margin-bottom:2px; color:#5a5a5a}
@@ -299,7 +305,7 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-size:11px;
     }
-    .svc-actions{display:flex; gap:8px; flex-wrap:wrap}
+    .svc-actions{display:flex; gap:8px; flex-wrap:wrap; flex-shrink:0}
 
     .acc{
       margin-top:10px;
