@@ -270,8 +270,24 @@
     }
     .sectionhead p{margin:0; color:var(--page-muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px}
 
-    .services{display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch}
-    @media (max-width: 880px){ .services{grid-template-columns:1fr} }
+    .services{display:flex; flex-direction:column; gap:14px}
+    @media (min-width: 881px){
+      .services-row{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:auto auto 1fr auto auto;
+        gap:14px;
+        align-items:start;
+      }
+      .services-row .svc{
+        display:grid;
+        grid-template-rows:subgrid;
+        grid-row:span 5;
+        min-height:0;
+      }
+      .services-row .svc:only-child{grid-column:1/-1}
+    }
+    @media (max-width: 880px){ .services-row{display:block} .services-row .svc{margin-bottom:14px} .services-row .svc:last-child{margin-bottom:0} }
 
     .svc{
       border:1px solid rgba(255,255,255,.8);
@@ -280,9 +296,9 @@
       background:linear-gradient(165deg, #e8e8ec 0%, #d0d0d6 25%, #c4c4cc 50%, #d0d0d6 75%, #e0e0e4 100%);
       box-shadow: 0 10px 30px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.9);
       color:#1a1a1a;
-      display:flex; flex-direction:column; gap:0;
       min-width:0;
     }
+    @media (max-width: 880px){ .svc{display:flex; flex-direction:column} }
     .svc-title{margin:0 0 8px; font-size:19px; letter-spacing:.3px; flex-shrink:0}
     .svc-title span{
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -291,29 +307,33 @@
       letter-spacing:.2px;
     }
     .svc-short{margin:0 0 12px; flex-shrink:0; color:#5a5a5a; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px; line-height:1.45}
+    .svc-price-wrap{display:flex; flex-direction:column; gap:0; margin-bottom:14px}
     .svc-price-box{
-      border:1px solid rgba(0,0,0,.12);
-      border-radius:10px;
-      padding:10px 14px;
-      margin-bottom:14px;
+      border:none;
+      border-radius:20px;
+      padding:14px 20px;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:#fff;
+      background:linear-gradient(145deg, #fafafa 0%, #f0f0f0 100%);
       color:#1a1a1a;
-      flex:1 1 0;
-      min-height:50px;
       display:flex;
       flex-direction:column;
       justify-content:flex-start;
+      box-shadow: 0 4px 12px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.8);
     }
+    @media (min-width: 881px){ .services-row .svc-price-wrap{margin-bottom:0} }
+    .svc-price-wrap:has(.svc-note) .svc-price-box{margin-bottom:0}
+    @media (max-width: 880px){ .svc-price-wrap{flex:1 1 0; min-height:0} .svc-price-wrap:not(:has(.svc-note)) .svc-price-box{margin-bottom:0} }
     .svc-price-box--no-old .svc-price .old{display:none}
     .svc-price .old{opacity:.6; text-decoration:line-through; font-size:12px; margin-bottom:2px; color:#5a5a5a}
     .svc-price .now{font-weight:700; font-size:16px; color:#1a1a1a}
     .svc-price .now.sale{font-size:18px; color:#1a1a1a}
     .svc-note{
-      margin:6px 0 0;
+      margin:10px 0 0 0;
+      padding:0;
       color:#5a5a5a;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-size:11px;
+      font-size:12px;
+      line-height:1.4;
     }
     .svc-actions{display:flex; gap:8px; flex-wrap:wrap; flex-shrink:0}
 
@@ -371,7 +391,10 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-size:13px;
     }
+    .footer-logo{display:block; line-height:0}
+    .footer-logo img{height:36px; width:auto; display:block}
     .footer a:hover{color:var(--page-fg)}
+    .footer-logo:hover{opacity:.85}
 
     /* Modal */
     .modal-backdrop{
@@ -485,7 +508,6 @@
             </div>
           </div>
         </div>
-        <a href="#blog" class="nav-link">Блог</a>
         <a href="#contacts" class="nav-link">Контакты</a>
       </nav>
 
@@ -519,7 +541,7 @@
           </div>
         </div>
         <div class="hero-photo">
-          <img src="hero-photo.jpg" alt="Loban — персональный стилист" />
+          <img src="IMAGE 2026-03-02 17:36:46.jpg" alt="Loban — персональный стилист" />
         </div>
       </div>
 
@@ -549,14 +571,16 @@
       </div>
 
       <div class="services">
-
+        <div class="services-row">
         <!-- 1 -->
         <article class="svc" id="svc-1">
           <h4 class="svc-title"><span>Консультация по типажу + цветотипу</span></h4>
           <p class="svc-short">Базовый разбор архитектуры внешности и направлений в одежде.</p>
-          <div class="svc-price-box">
-            <div class="svc-price">
-              <span class="now">50 BYN</span>
+          <div class="svc-price-wrap">
+            <div class="svc-price-box">
+              <div class="svc-price">
+                <span class="now">50 BYN</span>
+              </div>
             </div>
           </div>
           <div class="svc-actions">
@@ -585,12 +609,14 @@
         <article class="svc" id="svc-2">
           <h4 class="svc-title"><span>Расширенная консультация + мини-гайд</span></h4>
           <p class="svc-short">Глубокий системный разбор + PDF с закреплёнными рекомендациями.</p>
-          <div class="svc-price-box">
-            <div class="svc-price">
-              <span class="old">150 BYN</span>
-              <span class="now sale">100 BYN 🔥</span>
-              <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
+          <div class="svc-price-wrap">
+            <div class="svc-price-box">
+              <div class="svc-price">
+                <span class="old">150 BYN</span>
+                <span class="now sale">100 BYN 🔥</span>
+              </div>
             </div>
+            <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
           </div>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
@@ -613,17 +639,20 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-
+        </div>
+        <div class="services-row">
         <!-- 3 -->
         <article class="svc" id="svc-3">
           <h4 class="svc-title"><span>Расширенная консультация + мини-гайд + причёски</span></h4>
           <p class="svc-short">Целостный образ с учётом волос, формы и направления линий.</p>
-          <div class="svc-price-box">
-            <div class="svc-price">
-              <span class="old">200 BYN</span>
-              <span class="now sale">150 BYN 🔥</span>
-              <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
+          <div class="svc-price-wrap">
+            <div class="svc-price-box">
+              <div class="svc-price">
+                <span class="old">200 BYN</span>
+                <span class="now sale">150 BYN 🔥</span>
+              </div>
             </div>
+            <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
           </div>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
@@ -651,9 +680,11 @@
         <article class="svc" id="svc-4">
           <h4 class="svc-title"><span>Персональный лукбук</span></h4>
           <p class="svc-short">Система образов под ваш типаж и цвет. С артикулами и примерами фасонов.</p>
-          <div class="svc-price-box">
-            <div class="svc-price">
-              <span class="now">200 BYN</span>
+          <div class="svc-price-wrap">
+            <div class="svc-price-box">
+              <div class="svc-price">
+                <span class="now">200 BYN</span>
+              </div>
             </div>
           </div>
           <div class="svc-actions">
@@ -678,17 +709,20 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-
+        </div>
+        <div class="services-row">
         <!-- 5 -->
         <article class="svc" id="svc-5">
           <h4 class="svc-title"><span>Расширенная консультация + расширенный персональный лукбук</span></h4>
           <p class="svc-short">Полная стилевая стратегия и расширенная подборка образов.</p>
-          <div class="svc-price-box">
-            <div class="svc-price">
-              <span class="old">300 BYN</span>
-              <span class="now sale">250 BYN 🔥</span>
-              <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
+          <div class="svc-price-wrap">
+            <div class="svc-price-box">
+              <div class="svc-price">
+                <span class="old">300 BYN</span>
+                <span class="now sale">250 BYN 🔥</span>
+              </div>
             </div>
+            <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
           </div>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
@@ -716,11 +750,13 @@
         <article class="svc" id="svc-6">
           <h4 class="svc-title"><span>Онлайн-шоппинг / Оффлайн-шоппинг</span></h4>
           <p class="svc-short">Точный отбор вещей под типаж и задачу. Без лишних покупок.</p>
-          <div class="svc-price-box">
-            <div class="svc-price">
-              <span class="now">40 BYN / час</span>
-              <div class="svc-note">70 BYN / 2 часа · 100 BYN / 3 часа</div>
+          <div class="svc-price-wrap">
+            <div class="svc-price-box">
+              <div class="svc-price">
+                <span class="now">40 BYN / час</span>
+              </div>
             </div>
+            <div class="svc-note">70 BYN / 2 часа · 100 BYN / 3 часа</div>
           </div>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
@@ -743,14 +779,17 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-
+        </div>
+        <div class="services-row">
         <!-- 7 -->
         <article class="svc" id="svc-7">
           <h4 class="svc-title"><span>Подбор образа под событие</span></h4>
           <p class="svc-short">Решение под конкретное мероприятие и дресс-код.</p>
-          <div class="svc-price-box">
-            <div class="svc-price">
-              <span class="now">30 BYN</span>
+          <div class="svc-price-wrap">
+            <div class="svc-price-box">
+              <div class="svc-price">
+                <span class="now">30 BYN</span>
+              </div>
             </div>
           </div>
           <div class="svc-actions">
@@ -779,12 +818,14 @@
         <article class="svc" id="svc-8">
           <h4 class="svc-title"><span>Полное сопровождение</span></h4>
           <p class="svc-short">Комплексная работа: консультация, гардероб, шоппинг, образы.</p>
-          <div class="svc-price-box svc-price-box--no-old">
-            <div class="svc-price">
-              <span class="old">270 / 350 / 420 BYN</span>
-              <span class="now sale">200 / 270 / 350 BYN 🔥</span>
-              <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
+          <div class="svc-price-wrap">
+            <div class="svc-price-box svc-price-box--no-old">
+              <div class="svc-price">
+                <span class="old">270 / 350 / 420 BYN</span>
+                <span class="now sale">200 / 270 / 350 BYN 🔥</span>
+              </div>
             </div>
+            <div class="svc-note">Весенняя стоимость. Актуально до 31 марта.</div>
           </div>
           <div class="svc-actions">
             <button class="btn" data-toggle-details>Подробнее</button>
@@ -806,14 +847,17 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-
+        </div>
+        <div class="services-row">
         <!-- 9 -->
         <article class="svc" id="svc-9">
           <h4 class="svc-title"><span>Аудит гардероба</span></h4>
           <p class="svc-short">Структура и ясность: что оставить, что заменить, что докупить.</p>
-          <div class="svc-price-box">
-            <div class="svc-price">
-              <span class="now">40 BYN / час</span>
+          <div class="svc-price-wrap">
+            <div class="svc-price-box">
+              <div class="svc-price">
+                <span class="now">40 BYN / час</span>
+              </div>
             </div>
           </div>
           <div class="svc-actions">
@@ -837,32 +881,11 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-
+        </div>
       </div>
 
       <div class="rule muted">
         Работаю онлайн и оффлайн по всему миру.
-      </div>
-    </section>
-
-    <section class="section" id="blog" aria-label="Блог">
-      <div class="sectionhead">
-        <h3>Блог</h3>
-        <p>Ты пришлёшь статью - я оформлю её в стиль сайта.</p>
-      </div>
-
-      <div class="blog">
-        <article class="post">
-          <time datetime="2026-03-01">Март 2026</time>
-          <h4>Как читать свой типаж без перегруза</h4>
-          <p>Короткая логика: линии, масштаб, структура. Без лишнего шума.</p>
-        </article>
-
-        <article class="post">
-          <time datetime="2026-03-01">Март 2026</time>
-          <h4>12 цветотипов: зачем вам глубина и температура</h4>
-          <p>Почему один и тот же оттенок может выглядеть либо дорого, либо случайно.</p>
-        </article>
       </div>
     </section>
 
@@ -885,8 +908,9 @@
 
       <footer class="footer">
         <div>
-          <div style="letter-spacing:2px; text-transform:uppercase; color:var(--page-fg)">LOBAN</div>
-          <div>Loban.by</div>
+          <a href="#" class="footer-logo">
+            <img src="logo.png" alt="Loban.by" />
+          </a>
         </div>
         <div>
           <div>Онлайн и оффлайн по всему миру.</div>
