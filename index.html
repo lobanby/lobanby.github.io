@@ -265,22 +265,17 @@
 
     .services{display:flex; flex-direction:column; gap:14px}
     @media (min-width: 881px){
-      .services-row{
+      .services{
         display:grid;
         grid-template-columns:1fr 1fr;
-        grid-template-rows:auto auto auto auto auto;
         gap:14px;
         align-items:start;
       }
-      .services-row .svc{
-        display:grid;
-        grid-template-rows:subgrid;
-        grid-row:span 5;
-        min-height:0;
-      }
-      .services-row .svc:only-child{grid-column:1/-1}
+      .services .svc{min-height:0}
+      /* При нечётном количестве — последняя плашка на всю ширину */
+      .services .svc:last-child:nth-child(odd){grid-column:1/-1}
     }
-    @media (max-width: 880px){ .services-row{display:block} .services-row .svc{margin-bottom:14px} .services-row .svc:last-child{margin-bottom:0} }
+    @media (max-width: 880px){ .services{display:flex; flex-direction:column} .services .svc{margin-bottom:14px} .services .svc:last-child{margin-bottom:0} }
 
     .svc{
       border:1px solid rgba(0,0,0,.15);
@@ -313,7 +308,7 @@
       justify-content:flex-start;
       box-shadow: 0 4px 12px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.8);
     }
-    @media (min-width: 881px){ .services-row .svc-price-wrap{margin-bottom:0} }
+    @media (min-width: 881px){ .services .svc-price-wrap{margin-bottom:0} }
     .svc-price-wrap:has(.svc-note) .svc-price-box{margin-bottom:0}
     @media (max-width: 880px){ .svc-price-wrap{flex:none; margin-bottom:16px} }
     .svc-price-box--no-old .svc-price .old{display:none}
@@ -597,7 +592,6 @@
       </div>
 
       <div class="services">
-        <div class="services-row">
         <!-- Карманный стилист -->
         <article class="svc" id="svc-pocket">
           <h4 class="svc-title"><span>Карманный стилист</span></h4>
@@ -661,8 +655,7 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-        </div>
-        <div class="services-row">
+
         <!-- Консультация по цветовому типу -->
         <article class="svc" id="svc-color">
           <h4 class="svc-title"><span>Консультация по цветовому типу</span></h4>
@@ -728,8 +721,7 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-        </div>
-        <div class="services-row">
+
         <!-- Консультация по причёскам -->
         <article class="svc" id="svc-hair">
           <h4 class="svc-title"><span>Консультация по причёскам</span></h4>
@@ -794,8 +786,7 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-        </div>
-        <div class="services-row">
+
         <!-- 2 -->
         <article class="svc" id="svc-2">
           <h4 class="svc-title"><span>Расширенная консультация + мини-гайд</span></h4>
@@ -896,8 +887,7 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-        </div>
-        <div class="services-row">
+
         <!-- 5 -->
         <article class="svc" id="svc-5">
           <h4 class="svc-title"><span>Расширенная консультация + расширенный персональный лукбук</span></h4>
@@ -966,8 +956,7 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-        </div>
-        <div class="services-row">
+
         <!-- 7 -->
         <article class="svc" id="svc-7">
           <h4 class="svc-title"><span>Подбор образа под событие</span></h4>
@@ -1034,8 +1023,7 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-        </div>
-        <div class="services-row">
+
         <!-- 9 -->
         <article class="svc" id="svc-9">
           <h4 class="svc-title"><span>Аудит гардероба</span></h4>
@@ -1101,8 +1089,7 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-        </div>
-        <div class="services-row">
+
         <!-- 0 -->
         <article class="svc" id="svc-0">
           <h4 class="svc-title"><span>Определение типажа внешности самостоятельно</span></h4>
@@ -1133,7 +1120,6 @@
             <p class="presentation-placeholder">Презентация в разработке.</p>
           </div>
         </article>
-        </div>
       </div>
 
       <div class="rule muted">
