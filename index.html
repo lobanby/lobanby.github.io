@@ -269,11 +269,10 @@
         display:grid;
         grid-template-columns:1fr 1fr;
         gap:14px;
-        align-items:stretch;
+        align-items:start;
       }
       .services .svc{
         min-height:0;
-        height:100%;
       }
       /* При нечётном количестве — последняя плашка на всю ширину */
       .services .svc:last-child:nth-child(odd){grid-column:1/-1}
@@ -644,7 +643,7 @@
           <div class="svc-price-wrap">
             <div class="svc-price-box">
               <div class="svc-price">
-                <span class="now">40 BYN</span>
+                <span class="now">50 BYN</span>
               </div>
             </div>
             <div class="svc-note">Весенняя стоимость. Актуально до 31 мая.</div>
@@ -677,7 +676,7 @@
           <div class="svc-price-wrap">
             <div class="svc-price-box">
               <div class="svc-price">
-                <span class="now">40 BYN</span>
+                <span class="now">50 BYN</span>
               </div>
             </div>
             <div class="svc-note">Весенняя стоимость. Актуально до 31 мая.</div>
@@ -710,8 +709,8 @@
           <div class="svc-price-wrap">
             <div class="svc-price-box">
               <div class="svc-price">
-                <span class="old">80 BYN</span>
-                <span class="now sale">60 BYN 🔥</span>
+                <span class="old">100 BYN</span>
+                <span class="now sale">90 BYN 🔥</span>
               </div>
             </div>
             <div class="svc-note">Весенняя стоимость. Актуально до 31 мая.</div>
@@ -778,8 +777,8 @@
           <div class="svc-price-wrap">
             <div class="svc-price-box">
               <div class="svc-price">
-                <span class="old">110 BYN</span>
-                <span class="now sale">100 BYN 🔥</span>
+                <span class="old">150 BYN</span>
+                <span class="now sale">130 BYN 🔥</span>
               </div>
             </div>
             <div class="svc-note">Весенняя стоимость. Актуально до 31 мая.</div>
@@ -1231,7 +1230,7 @@
             </div>
             <div>
               <label for="contact">Телефон или мессенджер</label>
-              <input id="contact" name="Контакт" type="text" autocomplete="off" placeholder="Только телефон или @ник в Telegram / WhatsApp (без email)" required />
+              <input id="contact" name="Контакт" type="text" autocomplete="off" placeholder="Телефон или ник в Telegram / WhatsApp" required />
             </div>
             <div>
               <label for="service">Услуга</label>
@@ -1355,6 +1354,52 @@
         expandTrigger.setAttribute('aria-expanded', navServices.classList.contains('open'));
       });
     }
+
+    // Равная высота пары карточек только в свёрнутом виде (на десктопе сосед не тянется при «Подробнее»)
+    function equalizeSvcPairHeights(){
+      const mq = window.matchMedia('(min-width: 881px)');
+      const cards = [...document.querySelectorAll('.services > .svc')];
+      cards.forEach((c) => { c.style.minHeight = ''; });
+      if(!mq.matches || cards.length === 0) return;
+      const openStates = cards.map((c) => {
+        const acc = c.querySelector('.acc');
+        const btn = c.querySelector('[data-toggle-details]');
+        return { acc, wasOpen: !!(acc && acc.classList.contains('open')), btn };
+      });
+      let needRestore = false;
+      openStates.forEach((s) => {
+        if(s.wasOpen && s.acc){
+          needRestore = true;
+          s.acc.classList.remove('open');
+          s.acc.setAttribute('aria-hidden', 'true');
+          if(s.btn) s.btn.textContent = 'Подробнее';
+        }
+      });
+      if(needRestore) void document.body.offsetHeight;
+      for(let i = 0; i < cards.length; i += 2){
+        const a = cards[i];
+        const b = cards[i + 1];
+        if(!b) break;
+        const h = Math.max(a.getBoundingClientRect().height, b.getBoundingClientRect().height);
+        const px = Math.ceil(h) + 'px';
+        a.style.minHeight = px;
+        b.style.minHeight = px;
+      }
+      openStates.forEach((s) => {
+        if(s.wasOpen && s.acc){
+          s.acc.classList.add('open');
+          s.acc.setAttribute('aria-hidden', 'false');
+          if(s.btn) s.btn.textContent = 'Скрыть';
+        }
+      });
+    }
+    let equalizeSvcTid = 0;
+    function scheduleEqualizeSvc(){
+      clearTimeout(equalizeSvcTid);
+      equalizeSvcTid = setTimeout(equalizeSvcPairHeights, 120);
+    }
+    equalizeSvcPairHeights();
+    window.addEventListener('resize', scheduleEqualizeSvc);
 
     // Accordion
     document.querySelectorAll('[data-toggle-details]').forEach((btn) => {
