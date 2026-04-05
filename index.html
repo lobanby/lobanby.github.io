@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Loban.by - Персональный стилист</title>
-  <meta name="description" content="Loban.by - персональный стилист. Эксперт по типажам Kibbe / Larson и системе 12 цветотипов. Онлайн и оффлайн по всему миру." />
+  <meta name="description" content="Loban.by — Маша, персональный стилист: типажи Kibbe / Larson, 12 цветотипов. Стиль, детали, образ целиком — онлайн и офлайн." />
   <meta name="theme-color" content="#ffffff" />
 
   <style>
@@ -269,9 +269,12 @@
         display:grid;
         grid-template-columns:1fr 1fr;
         gap:14px;
-        align-items:start;
+        align-items:stretch;
       }
-      .services .svc{min-height:0}
+      .services .svc{
+        min-height:0;
+        height:100%;
+      }
       /* При нечётном количестве — последняя плашка на всю ширину */
       .services .svc:last-child:nth-child(odd){grid-column:1/-1}
     }
@@ -285,8 +288,9 @@
       box-shadow: 0 10px 30px rgba(0,0,0,.15), 0 4px 12px rgba(0,0,0,.1), inset 0 1px 0 rgba(255,255,255,.15);
       color:var(--plank-text);
       min-width:0;
+      display:flex;
+      flex-direction:column;
     }
-    @media (max-width: 880px){ .svc{display:flex; flex-direction:column} }
     .svc-title{margin:0 0 8px; font-size:19px; letter-spacing:.3px; flex-shrink:0}
     .svc-title span{
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -295,6 +299,12 @@
       letter-spacing:.2px;
     }
     .svc-short{margin:0 0 12px; flex-shrink:0; color:rgba(245,240,232,.9); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px; line-height:1.45}
+    @media (min-width: 881px){
+      .svc-short{
+        flex:1 1 auto;
+        margin-bottom:12px;
+      }
+    }
     .svc-price-wrap{display:flex; flex-direction:column; gap:0; margin-bottom:14px}
     .svc-price-wrap:has(.svc-note) .svc-note{margin-top:8px; margin-bottom:4px}
     .svc-price-box{
@@ -523,6 +533,7 @@
               <a href="#svc-4" class="nav-link">Персональный лукбук</a>
               <a href="#svc-5" class="nav-link">Расширенная консультация + расширенный лукбук</a>
               <a href="#svc-6" class="nav-link">Онлайн-шоппинг / Оффлайн-шоппинг</a>
+              <a href="#svc-hour" class="nav-link">Стилист на час</a>
               <a href="#svc-7" class="nav-link">Подбор образа под событие</a>
               <a href="#svc-8" class="nav-link">Полное сопровождение</a>
               <a href="#svc-9" class="nav-link">Аудит гардероба</a>
@@ -553,9 +564,9 @@
           <div class="kicker">Персональный стилист</div>
           <h1>LOBAN</h1>
           <p class="subtitle">
-            Эксперт по типажам Kibbe / Larson и системе 12 цветотипов.
-            Архитектура внешности, линии, цвет, пропорции.
-            Работаю онлайн и оффлайн по всему миру.
+            Я Маша — персональный стилист: веду по типажам Kibbe / Larson и по цветотипу в системе 12 сезонов.
+            Всё, что касается стиля, для меня как воздух: причёски, очки, шапки — подбираю и смотрю на каждую деталь так, чтобы она звучала вместе с вами, а не «просто красиво».
+            Работаю онлайн и офлайн — там, где вам комфортно, по всему миру.
           </p>
           <div class="hero-cta">
             <button class="btn primary" data-open-order>Записаться</button>
@@ -563,7 +574,7 @@
           </div>
         </div>
         <div class="hero-photo">
-          <img src="photo_2026-03-02 17.41.13.jpeg" alt="Loban — персональный стилист" />
+          <img src="photo_2026-03-02 17.41.13.jpeg" alt="Маша Loban — персональный стилист" />
         </div>
       </div>
 
@@ -967,6 +978,40 @@
           </div>
         </article>
 
+        <!-- Стилист на час -->
+        <article class="svc" id="svc-hour">
+          <h4 class="svc-title"><span>Стилист на час</span></h4>
+          <p class="svc-short">Стилизация фотосессий, праздников и других событий — оплата по часам работы.</p>
+          <div class="svc-price-wrap">
+            <div class="svc-price-box">
+              <div class="svc-price">
+                <span class="now">60 BYN / 1 час</span>
+              </div>
+            </div>
+            <div class="svc-note">2 часа — 110 BYN · 3 часа — 150 BYN · 4 часа — 200 BYN</div>
+          </div>
+          <div class="svc-actions">
+            <button class="btn" data-toggle-details>Подробнее</button>
+            <button class="btn" data-open-presentation data-presentation-url="#">Презентация</button>
+            <button class="btn primary" data-open-order data-service="Стилист на час">Заказать</button>
+            <a class="btn" href="https://t.me/loban_by_official" target="_blank" rel="noopener">Telegram</a>
+          </div>
+          <div class="acc" aria-hidden="true">
+            <p class="muted">
+              Я стилизую съёмки — от образа и деталей до целостной картины на кадре — и параллельно оказываю услуги по подбору образов, сопровождению, консультациям на площадке или перед событием. Подойдёт для фотосессий, праздников, выездов и других форматов, где нужен стилист рядом по времени.
+            </p>
+            <ul class="muted">
+              <li>Стилизация Съёмок И Мероприятий.</li>
+              <li>Подбор Образов И Консультации.</li>
+              <li>Сопровождение Во Время Съёмки Или События.</li>
+              <li>Почасовая Оплата — Прозрачный Объём Работы.</li>
+            </ul>
+          </div>
+          <div class="presentation-content" hidden>
+            <p class="presentation-placeholder">Презентация в разработке.</p>
+          </div>
+        </article>
+
         <!-- 7 -->
         <article class="svc" id="svc-7">
           <h4 class="svc-title"><span>Подбор образа под событие</span></h4>
@@ -1185,8 +1230,8 @@
               <input id="name" name="Имя" autocomplete="name" required />
             </div>
             <div>
-              <label for="contact">Контакт</label>
-              <input id="contact" name="Контакт" placeholder="@telegram или телефон или email" required />
+              <label for="contact">Телефон или мессенджер</label>
+              <input id="contact" name="Контакт" type="text" autocomplete="off" placeholder="Только телефон или @ник в Telegram / WhatsApp (без email)" required />
             </div>
             <div>
               <label for="service">Услуга</label>
@@ -1204,6 +1249,7 @@
                 <option>Персональный лукбук</option>
                 <option>Расширенная консультация + расширенный персональный лукбук</option>
                 <option>Онлайн-шоппинг / Оффлайн-шоппинг</option>
+                <option>Стилист на час</option>
                 <option>Подбор образа под событие</option>
                 <option>Полное сопровождение</option>
                 <option>Аудит гардероба</option>
