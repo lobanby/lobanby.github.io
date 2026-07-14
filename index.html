@@ -263,6 +263,28 @@
     }
     .sectionhead p{margin:0; color:var(--page-muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:13px}
 
+    .sectionhead-main{display:flex; flex-direction:column; gap:6px; min-width:min(100%, 280px)}
+    .currency-picker{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:8px;
+      margin-left:auto;
+    }
+    .currency-picker-label{
+      margin:0;
+      font:700 12px/1.2 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      letter-spacing:.55px;
+      text-transform:uppercase;
+      color:var(--page-fg);
+    }
+    @media (max-width: 700px){
+      .sectionhead{align-items:stretch}
+      .currency-picker{align-items:flex-start; margin-left:0; width:100%}
+      .navcta .currency-switch{display:none}
+    }
+
+
     .services{display:flex; flex-direction:column; gap:14px}
     @media (min-width: 881px){
       .services{
@@ -687,28 +709,29 @@
 
     <section class="section" id="services" aria-label="Услуги">
       <div class="sectionhead">
-        <h3>Услуги</h3>
-        <p>Каждая услуга - самостоятельный продукт с понятным результатом.</p>
+        <div class="sectionhead-main">
+          <h3>Услуги</h3>
+          <p>Каждая услуга - самостоятельный продукт с понятным результатом.</p>
+        </div>
+        <div class="currency-picker" aria-label="Выбор валюты">
+          <p class="currency-picker-label">Выберите валюту</p>
+          <div class="currency-switch" data-currency-switch data-variant="light" role="group" aria-label="Валюта">
+            <button type="button" class="currency-btn is-active" data-currency="BYN" aria-pressed="true">BYN</button>
+            <button type="button" class="currency-btn" data-currency="RUB" aria-pressed="false">₽</button>
+            <button type="button" class="currency-btn" data-currency="EUR" aria-pressed="false">€</button>
+          </div>
+        </div>
       </div>
 
       <div class="services">
         <!-- Карманный стилист -->
-        
-      <div class="currency-plank" aria-label="Пересчёт валюты">
-        <p class="currency-plank-text">Цены в <strong>белорусских рублях</strong>. Пересчёт: <strong>100 ₽ = 3,7 BYN</strong> · <strong>1 € = 3,4 BYN</strong> (округление вверх).</p>
-        <div class="currency-switch" data-currency-switch role="group" aria-label="Валюта">
-          <button type="button" class="currency-btn is-active" data-currency="BYN" aria-pressed="true">BYN</button>
-          <button type="button" class="currency-btn" data-currency="RUB" aria-pressed="false">₽</button>
-          <button type="button" class="currency-btn" data-currency="EUR" aria-pressed="false">€</button>
-        </div>
-      </div>
-<article class="svc" id="svc-pocket">
+        <article class="svc" id="svc-pocket">
           <h4 class="svc-title"><span>Карманный стилист</span></h4>
-          <p class="svc-short">Быстрая консультация в магазине: брать или не брать — решаем на месте.</p>
+          <p class="svc-short">10 минут моего времени: обсуждаем ваш образ — почему да / нет / не берём.</p>
           <div class="svc-price-wrap">
             <div class="svc-price-box">
               <div class="svc-price">
-                <span class="now" data-money data-byn="2" data-tpl="{v} / 1 аутфит">2 BYN / 1 аутфит</span>
+                <span class="now" data-money data-byn="5" data-tpl="{v} / 10 мин">5 BYN / 10 мин</span>
               </div>
             </div>
                       </div>
@@ -720,11 +743,11 @@
           </div>
           <div class="acc" aria-hidden="true">
             <p class="muted">
-              Скорость ответа — задержка до 15 минут. Консультация в режиме реального времени, когда вы в магазине. Один аутфит — один вопрос: брать или не брать, как сочетать, что подойдёт под ваш типаж.
+              10 минут на разбор: вы присылаете фото / пишете в моменте — вместе смотрим вещь и решаем, почему брать, почему нет или почему лучше не брать. Без воды: только решение по образу и вашим задачам.
             </p>
             <ul class="muted">
-              <li>Мгновенный Ответ: Брать / Не Брать.</li>
-              <li>Краткие Рекомендации По Сочетанию.</li>
+              <li>10 Минут Моего Времени.</li>
+              <li>Разбор: Да / Нет / Не Берём — С Пояснением.</li>
               <li>Удобно В Магазине Или При Онлайн-выборе.</li>
             </ul>
           </div>
@@ -1450,6 +1473,7 @@
       }
       /* Фиксированные витринные цены (не только авто-курс) */
       var PRICE_FIX = {
+        5:   { RUB: 200, EUR: 2 },
         80:  { RUB: 2500, EUR: 25 },
         130: { RUB: 3500, EUR: 40 },
         350: { RUB: 10000 },
