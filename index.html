@@ -238,10 +238,67 @@
         padding:15px 18px;
       }
     }
-    .card .btn, .svc .btn, .post .btn{color:var(--plank-text); border-color:rgba(255,255,255,.35)}
-    .card .btn:hover, .svc .btn:hover, .post .btn:hover{background:rgba(255,255,255,.1)}
-    .card .btn.primary, .svc .btn.primary, .post .btn.primary{background:rgba(255,255,255,.2)}
-    .card .btn.primary:hover, .svc .btn.primary:hover, .post .btn.primary:hover{background:rgba(255,255,255,.25)}
+    .card .btn, .post .btn{color:var(--plank-text); border-color:rgba(255,255,255,.35)}
+    .card .btn:hover, .post .btn:hover{background:rgba(255,255,255,.1)}
+    .card .btn.primary, .post .btn.primary{background:rgba(255,255,255,.2)}
+    .card .btn.primary:hover, .post .btn.primary:hover{background:rgba(255,255,255,.25)}
+
+    .svc .btn{
+      color:#f8f3eb;
+      border-color:rgba(255,255,255,.42);
+      background:linear-gradient(180deg, rgba(255,255,255,.24) 0%, rgba(255,255,255,.11) 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.34),
+        0 2px 0 rgba(45, 32, 24, .52),
+        0 5px 12px rgba(0,0,0,.17);
+      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease, background .12s ease;
+    }
+    .svc .btn:hover{
+      filter:brightness(1.06);
+      background:linear-gradient(180deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,.15) 100%);
+    }
+    .svc .btn:active{
+      transform:translateY(2px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.24),
+        0 1px 0 rgba(45, 32, 24, .48),
+        0 3px 8px rgba(0,0,0,.14);
+    }
+    .svc .btn.primary{
+      color:#4a362c;
+      border-color:rgba(255,255,255,.62);
+      background:linear-gradient(180deg, #faf4ee 0%, #efe4d8 48%, #e4d5c6 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.88),
+        0 2px 0 rgba(74, 54, 44, .62),
+        0 6px 14px rgba(0,0,0,.19);
+    }
+    .svc .btn.primary:hover{
+      filter:brightness(1.03);
+      background:linear-gradient(180deg, #fffcf8 0%, #f3ebe2 48%, #e8dbd0 100%);
+    }
+    .svc .btn.primary:active{
+      transform:translateY(2px);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.72),
+        0 1px 0 rgba(74, 54, 44, .58),
+        0 4px 10px rgba(0,0,0,.15);
+    }
+    .svc .btn:focus{
+      outline:none;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.34),
+        0 2px 0 rgba(45, 32, 24, .52),
+        0 5px 12px rgba(0,0,0,.17),
+        0 0 0 3px rgba(255,255,255,.22);
+    }
+    .svc .btn.primary:focus{
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.88),
+        0 2px 0 rgba(74, 54, 44, .62),
+        0 6px 14px rgba(0,0,0,.19),
+        0 0 0 3px rgba(255,255,255,.28);
+    }
 
     .hero{padding:44px 0 34px}
     .hero-inner{display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:center; margin-bottom:22px}
@@ -344,14 +401,30 @@
     }
     .currency-picker-label{
       margin:0;
-      font:700 12px/1.2 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      letter-spacing:.55px;
+      font:700 14px/1.25 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      letter-spacing:.7px;
       text-transform:uppercase;
       color:var(--page-fg);
     }
+    .currency-picker .currency-switch{
+      padding:6px;
+      gap:6px;
+      min-width:min(100%, 360px);
+    }
+    .currency-picker .currency-btn{
+      font-size:15px;
+      font-weight:700;
+      padding:12px 16px;
+      min-width:64px;
+      flex:1 1 0;
+      text-align:center;
+    }
     @media (max-width: 700px){
-      .sectionhead{align-items:stretch}
-      .currency-picker{align-items:flex-start; margin-left:0; width:100%}
+      .sectionhead{align-items:stretch; gap:16px; margin-bottom:14px}
+      .currency-picker{align-items:stretch; margin-left:0; width:100%; gap:10px}
+      .currency-picker .currency-switch{width:100%; max-width:none; min-width:0}
+      .currency-picker .currency-btn{font-size:16px; padding:13px 10px}
+      .currency-picker-label{font-size:13px}
       .navcta .currency-switch{display:none}
     }
 
@@ -739,8 +812,8 @@
 
             <div class="navcta">
         <div class="currency-switch" data-currency-switch role="group" aria-label="Валюта">
-          <button type="button" class="currency-btn is-active" data-currency="BYN" aria-pressed="true">BYN</button>
-          <button type="button" class="currency-btn" data-currency="RUB" aria-pressed="false">₽</button>
+          <button type="button" class="currency-btn" data-currency="BYN" aria-pressed="false">BYN</button>
+          <button type="button" class="currency-btn is-active" data-currency="RUB" aria-pressed="true">₽</button>
           <button type="button" class="currency-btn" data-currency="EUR" aria-pressed="false">€</button>
           <button type="button" class="currency-btn" data-currency="USD" aria-pressed="false">$</button>
         </div>
@@ -1748,7 +1821,7 @@
         if(saved === 'RUB' || saved === 'EUR' || saved === 'USD' || saved === 'BYN'){
           updatePrices(saved);
         } else {
-          updatePrices('BYN');
+          updatePrices('RUB');
         }
       }
       if(document.readyState === 'loading'){
