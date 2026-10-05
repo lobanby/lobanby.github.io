@@ -265,17 +265,20 @@
         0 3px 8px rgba(0,0,0,.14);
     }
     .svc .btn.primary{
-      color:#4a362c;
-      border-color:rgba(255,255,255,.62);
-      background:linear-gradient(180deg, #faf4ee 0%, #efe4d8 48%, #e4d5c6 100%);
+      color:#352419;
+      font-weight:800;
+      letter-spacing:.35px;
+      border-color:rgba(255,255,255,.72);
+      background:linear-gradient(180deg, #fffdfb 0%, #f5ebe0 45%, #ecdcc9 100%);
+      text-shadow:0 1px 0 rgba(255,255,255,.45);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.88),
-        0 2px 0 rgba(74, 54, 44, .62),
-        0 6px 14px rgba(0,0,0,.19);
+        inset 0 1px 0 rgba(255,255,255,.95),
+        0 2px 0 rgba(74, 54, 44, .68),
+        0 7px 16px rgba(0,0,0,.22);
     }
     .svc .btn.primary:hover{
-      filter:brightness(1.03);
-      background:linear-gradient(180deg, #fffcf8 0%, #f3ebe2 48%, #e8dbd0 100%);
+      filter:brightness(1.05);
+      background:linear-gradient(180deg, #ffffff 0%, #f8efe4 45%, #f0e2d4 100%);
     }
     .svc .btn.primary:active{
       transform:translateY(2px);
@@ -426,6 +429,19 @@
       .currency-picker .currency-btn{font-size:16px; padding:13px 10px}
       .currency-picker-label{font-size:13px}
       .navcta .currency-switch{display:none}
+    }
+    @media (min-width: 881px){
+      #services .currency-picker{
+        width:calc((100% - 14px) / 2);
+        max-width:calc((var(--max) - 36px - 14px) / 2);
+        align-items:stretch;
+      }
+      #services .currency-picker-label{text-align:left}
+      #services .currency-picker .currency-switch{
+        width:100%;
+        min-width:0;
+        max-width:none;
+      }
     }
 
 
